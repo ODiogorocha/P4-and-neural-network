@@ -1,0 +1,17 @@
+# Comandos para configurar as tabelas no BMv2
+# Execute este arquivo usando: simple_switch_CLI --thrift-port 9090 < p4_code/commands.txt
+
+# Adicionar entradas na tabela ethernet_table
+table_add ethernet_table set_egress_port 00:00:00:00:00:01 => 1
+table_add ethernet_table set_egress_port 00:00:00:00:00:02 => 2
+table_add ethernet_table set_egress_port 00:00:00:00:00:03 => 3
+
+# Adicionar entradas na tabela ipv4_table
+table_add ipv4_table ipv4_forward 10.0.1.0/24 => 1 00:00:00:00:00:01
+table_add ipv4_table ipv4_forward 10.0.2.0/24 => 2 00:00:00:00:00:02
+table_add ipv4_table ipv4_forward 10.0.3.0/24 => 3 00:00:00:00:00:03
+
+# Mostrar entradas das tabelas
+table_dump ethernet_table
+table_dump ipv4_table
+
