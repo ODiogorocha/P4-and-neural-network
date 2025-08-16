@@ -14,10 +14,6 @@ struct headers {
     ethernet_t ethernet;
 }
 
-counter packet_counter {
-    type : packets;
-    direct : my_table;
-}
 
 parser MyParser(packet_in packet, out headers hdr, inout metadata_t meta, inout standard_metadata_t sm) {
     state start {
@@ -27,6 +23,9 @@ parser MyParser(packet_in packet, out headers hdr, inout metadata_t meta, inout 
 }
 
 control MyIngress(inout headers hdr, inout metadata_t meta, inout standard_metadata_t sm) {
+
+    direct_counter<bit<32>>(my_table) packet_counter;
+
     table my_table {
         key = {
             hdr.ethernet.srcAddr: exact;
@@ -41,6 +40,7 @@ control MyIngress(inout headers hdr, inout metadata_t meta, inout standard_metad
         my_table.apply();
     }
 }
+
 
 control MyEgress(inout headers hdr, inout metadata_t meta, inout standard_metadata_t sm) { apply { } }
 control MyDeparser(packet_out packet, in headers hdr) { apply { packet.emit(hdr.ethernet); } }
