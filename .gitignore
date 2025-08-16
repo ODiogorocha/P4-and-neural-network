@@ -1,0 +1,23 @@
+# Ignorar arquivos de cache e logs
+__pycache__/
+*.log
+
+# Ignorar dados gerados
+data_collection/*.csv
+models/*.h5
+models/*.pkl
+
+# Ignorar ambientes virtuais
+virtualenv/
+virtual_env/
+virtual-env/
+venv/
+env/
+
+# Ignorar arquivos de configuração local
+config_local.py
+
+# Ignorar arquivos de sistema
+.DS_Store
+thumbs.db
+
