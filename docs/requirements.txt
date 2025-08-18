@@ -12,3 +12,9 @@ argparse
 json5
 tabulate
 
+#pip install p4utils não funciona, porque o pacote não está no PyPI.
+#Você precisa instalar via GitHub + script oficial.
+#git clone https://github.com/nsg-ethz/p4-utils.git
+#cd p4-utils
+#sudo ./install.sh
+
